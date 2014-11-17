@@ -68,6 +68,15 @@ module SimpleCaptcha
           @@redis = nil
           @@expire = 3600
         }
+      elsif type == 'memcache'
+        instance_eval %q{
+          mattr_accessor :memcache, :expire, :memcache_namespace
+          def self.memcache
+            @@memcache ||= Rails.cache
+          end
+          @@expire = 360
+          @@memcache_namespace = 'captcha:'
+        }
       end
     end
   end

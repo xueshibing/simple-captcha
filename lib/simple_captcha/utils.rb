@@ -10,6 +10,7 @@ module SimpleCaptcha #:nodoc
       unless (image_magick_path = SimpleCaptcha.image_magick_path).blank?
         command = File.join(image_magick_path, command)
       end
+      puts params
 
       output = `#{command}`
 
@@ -18,6 +19,29 @@ module SimpleCaptcha #:nodoc
       end
 
       output
+    end
+
+    def self.set_simple_captcha_data(key, options={})
+      code_type = options[:code_type]
+
+      value = generate_simple_captcha_data(code_type)
+      data = SimpleCaptcha::SimpleCaptchaData.new({:key =>  key, :value => value})
+      data.value = value
+      data.save
+      key
+    end
+
+    def self.generate_simple_captcha_data(code)
+      value = ''
+
+      case code
+      when 'numeric' then
+        SimpleCaptcha.length.times{value << (48 + rand(10)).chr}
+      else
+        SimpleCaptcha.length.times{value << (65 + rand(26)).chr}
+      end
+
+      return value
     end
 
     def self.simple_captcha_value(key) #:nodoc

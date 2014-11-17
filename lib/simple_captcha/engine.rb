@@ -17,6 +17,8 @@ module SimpleCaptcha
           require 'simple_captcha/simple_captcha_data_mongoid.rb'
         when 'redis'
           require 'simple_captcha/simple_captcha_data_redis.rb'
+        when 'memcache'
+          require 'simple_captcha/simple_captcha_data_memcache.rb'
         else
           raise StandardError.new("Unknown store: #{SimpleCaptcha.store}")
       end

@@ -4,14 +4,14 @@ module SimpleCaptcha #:nodoc
 
     mattr_accessor :image_styles
     @@image_styles = {
-      'embosed_silver'  => ['-fill darkblue', '-shade 20x60', '-background white'],
+      #'embosed_silver'  => ['-fill darkblue', '-shade 20x60', '-background white'],
       'simply_red'      => ['-fill darkred', '-background white'],
       'simply_green'    => ['-fill darkgreen', '-background white'],
       'simply_blue'     => ['-fill darkblue', '-background white'],
-      'distorted_black' => ['-fill darkblue', '-edge 10', '-background white'],
-      'all_black'       => ['-fill darkblue', '-edge 2', '-background white'],
-      'charcoal_grey'   => ['-fill darkblue', '-charcoal 5', '-background white'],
-      'almost_invisible' => ['-fill red', '-solarize 50', '-background white']
+      #'distorted_black' => ['-fill darkblue', '-edge 10', '-background white'],
+      #'all_black'       => ['-fill darkblue', '-edge 2', '-background white'],
+      #'charcoal_grey'   => ['-fill darkblue', '-charcoal 5', '-background white'],
+      #'almost_invisible' => ['-fill red', '-solarize 50', '-background white']
     }
 
     DISTORTIONS = ['low', 'medium', 'high']
@@ -59,7 +59,7 @@ module SimpleCaptcha #:nodoc
 
       def generate_simple_captcha_image(simple_captcha_key) #:nodoc
         amplitude, frequency = ImageHelpers.distortion(SimpleCaptcha.distortion)
-        text = Utils::simple_captcha_value(simple_captcha_key)
+        text = Utils.simple_captcha_value(simple_captcha_key)
 
         params = ImageHelpers.image_params(SimpleCaptcha.image_style).dup
         params << "-size #{SimpleCaptcha.image_size}"

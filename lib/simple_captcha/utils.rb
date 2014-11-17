@@ -10,7 +10,6 @@ module SimpleCaptcha #:nodoc
       unless (image_magick_path = SimpleCaptcha.image_magick_path).blank?
         command = File.join(image_magick_path, command)
       end
-      puts params
 
       output = `#{command}`
 

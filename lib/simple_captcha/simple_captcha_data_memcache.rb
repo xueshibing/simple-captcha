@@ -27,9 +27,7 @@ module SimpleCaptcha
 
     class << self
       def formated_key(k)
-        s = "#{SimpleCaptcha.memcache_namespace}#{k}"
-        puts s
-        s
+        "#{SimpleCaptcha.memcache_namespace}#{k}"
       end
 
       def get_data(key)

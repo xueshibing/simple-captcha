@@ -30,7 +30,7 @@ module SimpleCaptcha
       end
 
       def captcha_path?(request_path)
-        request_path.include?('/simple_captcha')
+        request_path.include?(SimpleCaptcha.path)
       end
 
       def send_file(path, options = {})

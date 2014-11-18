@@ -19,6 +19,9 @@ module SimpleCaptcha
   mattr_accessor :length
   @@length = 5
 
+  mattr_accessor :path
+  @@path = '/simple_captcha'
+
   # 'embosed_silver',
   # 'simply_red',
   # 'simply_green',

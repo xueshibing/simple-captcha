@@ -35,7 +35,7 @@ module SimpleCaptcha
       end
 
       def remove_data(key)
-        SimpleCaptcha.memcache.del self.formated_key(key)
+        SimpleCaptcha.memcache.delete self.formated_key(key)
       end
 
       def clear_old_data(time)
